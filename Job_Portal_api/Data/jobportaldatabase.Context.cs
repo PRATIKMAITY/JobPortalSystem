@@ -13,10 +13,10 @@ namespace Job_Portal_api.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class jobportaldbEntities : DbContext
+    public partial class jobpotaldbEntities : DbContext
     {
-        public jobportaldbEntities()
-            : base("name=jobportaldbEntities")
+        public jobpotaldbEntities()
+            : base("name=jobpotaldbEntities")
         {
         }
     
@@ -25,5 +25,6 @@ namespace Job_Portal_api.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<JobCategory> JobCategories { get; set; }
     }
 }

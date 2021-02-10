@@ -4,20 +4,50 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="jobportaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="jobportaldbModelStoreContainer" />
+      <Schema Namespace="jobpotaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JobCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryDesc" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="jobpotaldbModelStoreContainer">
+          <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="jobportaldbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="jobportaldbEntities" annotation:LazyLoadingEnabled="true" />
+      <Schema Namespace="jobpotaldbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JobCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="jobpotaldbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JobCategories" EntityType="Self.JobCategory" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="jobportaldbModelStoreContainer" CdmEntityContainer="jobportaldbEntities" />
+        <EntityContainerMapping StorageEntityContainer="jobpotaldbModelStoreContainer" CdmEntityContainer="jobpotaldbEntities">
+          <EntitySetMapping Name="JobCategories">
+            <EntityTypeMapping TypeName="jobpotaldbModel.JobCategory">
+              <MappingFragment StoreEntitySet="JobCategory">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
