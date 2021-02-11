@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jobpotaldbModelStoreContainer" CdmEntityContainer="jobpotaldbEntities">
+    <EntitySetMapping Name="JobCategories">
+      <EntityTypeMapping TypeName="jobpotaldbModel.JobCategory">
+        <MappingFragment StoreEntitySet="JobCategory">
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryIcon" ColumnName="CategoryIcon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDescs">
+      <EntityTypeMapping TypeName="jobpotaldbModel.JobDesc">
+        <MappingFragment StoreEntitySet="JobDesc">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="ComapanyId" ColumnName="ComapanyId" />
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="ExpextedSalary" ColumnName="ExpextedSalary" />
+          <ScalarProperty Name="JobLoc" ColumnName="JobLoc" />
+          <ScalarProperty Name="JobDesc1" ColumnName="JobDesc" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="JobPos" ColumnName="JobPos" />
+          <ScalarProperty Name="MinQulafication" ColumnName="MinQulafication" />
+          <ScalarProperty Name="JobSkill" ColumnName="JobSkill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobpotaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="JobCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryDesc" Type="varchar(max)" />
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryIcon" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="JobDesc">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="JobName" Type="varchar(max)" />
+    <Property Name="ComapanyId" Type="uniqueidentifier" />
+    <Property Name="JobType" Type="varchar" MaxLength="50" />
+    <Property Name="ExpextedSalary" Type="varchar(max)" />
+    <Property Name="JobLoc" Type="varchar" MaxLength="50" />
+    <Property Name="JobDesc" Type="varchar(max)" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="JobPos" Type="varchar(max)" />
+    <Property Name="MinQulafication" Type="varchar(max)" />
+    <Property Name="JobSkill" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_JobDesc_JobCategory">
+    <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
+    <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="JobDesc">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jobpotaldbModelStoreContainer">
+    <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobDesc" EntityType="Self.JobDesc" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
+      <End Role="JobCategory" EntitySet="JobCategory" />
+      <End Role="JobDesc" EntitySet="JobDesc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

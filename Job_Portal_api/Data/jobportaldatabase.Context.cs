@@ -26,5 +26,6 @@ namespace Job_Portal_api.Data
         }
     
         public virtual DbSet<JobCategory> JobCategories { get; set; }
+        public virtual DbSet<JobDesc> JobDescs { get; set; }
     }
 }

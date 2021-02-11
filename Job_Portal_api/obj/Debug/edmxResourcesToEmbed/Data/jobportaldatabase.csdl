@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobpotaldbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="JobCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="JobDescs" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobCategory" ToRole="JobDesc" />
+  </EntityType>
+  <EntityType Name="JobDesc">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="Guid" Nullable="false" />
+    <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ComapanyId" Type="Guid" />
+    <Property Name="JobType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpextedSalary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JobLoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JobDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="JobPos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MinQulafication" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JobSkill" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="JobCategory" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobDesc" ToRole="JobCategory" />
+  </EntityType>
+  <Association Name="FK_JobDesc_JobCategory">
+    <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
+    <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="JobDesc">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jobpotaldbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="JobCategories" EntityType="Self.JobCategory" />
+    <EntitySet Name="JobDescs" EntityType="Self.JobDesc" />
+    <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
+      <End Role="JobCategory" EntitySet="JobCategories" />
+      <End Role="JobDesc" EntitySet="JobDescs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
