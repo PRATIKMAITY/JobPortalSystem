@@ -11,10 +11,44 @@
           </Key>
           <Property Name="CategoryName" Type="varchar" MaxLength="50" />
           <Property Name="CategoryDesc" Type="varchar(max)" />
-          <Property Name="CategoryId" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryIcon" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="JobDesc">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="JobName" Type="varchar(max)" />
+          <Property Name="ComapanyId" Type="uniqueidentifier" />
+          <Property Name="JobType" Type="varchar" MaxLength="50" />
+          <Property Name="ExpextedSalary" Type="varchar(max)" />
+          <Property Name="JobLoc" Type="varchar" MaxLength="50" />
+          <Property Name="JobDesc" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="JobPos" Type="varchar(max)" />
+          <Property Name="MinQulafication" Type="varchar(max)" />
+          <Property Name="JobSkill" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_JobDesc_JobCategory">
+          <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
+          <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="JobDesc">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="jobpotaldbModelStoreContainer">
           <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobDesc" EntityType="Self.JobDesc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
+            <End Role="JobCategory" EntitySet="JobCategory" />
+            <End Role="JobDesc" EntitySet="JobDesc" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -27,10 +61,46 @@
           </Key>
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CategoryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryId" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobDescs" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobCategory" ToRole="JobDesc" />
         </EntityType>
+        <EntityType Name="JobDesc">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Guid" Nullable="false" />
+          <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComapanyId" Type="Guid" />
+          <Property Name="JobType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpextedSalary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobLoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobDesc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="JobPos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MinQulafication" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobSkill" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobCategory" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobDesc" ToRole="JobCategory" />
+        </EntityType>
+        <Association Name="FK_JobDesc_JobCategory">
+          <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
+          <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="JobDesc">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="jobpotaldbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="JobCategories" EntityType="Self.JobCategory" />
+          <EntitySet Name="JobDescs" EntityType="Self.JobDesc" />
+          <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
+            <End Role="JobCategory" EntitySet="JobCategories" />
+            <End Role="JobDesc" EntitySet="JobDescs" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -44,6 +114,24 @@
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryIcon" ColumnName="CategoryIcon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobDescs">
+            <EntityTypeMapping TypeName="jobpotaldbModel.JobDesc">
+              <MappingFragment StoreEntitySet="JobDesc">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="ComapanyId" ColumnName="ComapanyId" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="ExpextedSalary" ColumnName="ExpextedSalary" />
+                <ScalarProperty Name="JobLoc" ColumnName="JobLoc" />
+                <ScalarProperty Name="JobDesc1" ColumnName="JobDesc" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="JobPos" ColumnName="JobPos" />
+                <ScalarProperty Name="MinQulafication" ColumnName="MinQulafication" />
+                <ScalarProperty Name="JobSkill" ColumnName="JobSkill" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

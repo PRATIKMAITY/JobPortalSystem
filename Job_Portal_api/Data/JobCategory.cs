@@ -14,8 +14,18 @@ namespace Job_Portal_api.Data
     
     public partial class JobCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public JobCategory()
+        {
+            this.JobDescs = new HashSet<JobDesc>();
+        }
+    
         public string CategoryName { get; set; }
         public string CategoryDesc { get; set; }
-        public decimal CategoryId { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryIcon { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobDesc> JobDescs { get; set; }
     }
 }

@@ -6,7 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using AutoMapper;
+using Job_Portal_api.App_Start;
 namespace Job_Portal_api
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -18,6 +19,7 @@ namespace Job_Portal_api
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }
