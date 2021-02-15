@@ -10,6 +10,7 @@
 namespace Job_Portal_api.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -27,5 +28,6 @@ namespace Job_Portal_api.Data
     
         public virtual DbSet<JobCategory> JobCategories { get; set; }
         public virtual DbSet<JobDesc> JobDescs { get; set; }
+        public IEnumerable<object> JobDesc { get; internal set; }
     }
 }
