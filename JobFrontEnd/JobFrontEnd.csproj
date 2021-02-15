@@ -124,6 +124,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +210,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\about-1-570x350.jpg" />
+    <Content Include="images\about-fullscreen-image-1-1920x600.jpg" />
+    <Content Include="images\banner-image-1-1920x500.jpg" />
+    <Content Include="images\blog-image-1-940x460.jpg" />
+    <Content Include="images\blog-image-2-940x460.jpg" />
+    <Content Include="images\blog-image-3-940x460.jpg" />
+    <Content Include="images\blog-image-fullscren-1-1920x700.jpg" />
+    <Content Include="images\map.jpg" />
+    <Content Include="images\product-1-720x480.jpg" />
+    <Content Include="images\product-2-720x480.jpg" />
+    <Content Include="images\product-3-720x480.jpg" />
+    <Content Include="images\product-4-720x480.jpg" />
+    <Content Include="images\product-5-720x480.jpg" />
+    <Content Include="images\product-6-720x480.jpg" />
+    <Content Include="images\slider-image-1-1920x900.jpg" />
+    <Content Include="images\slider-image-2-1920x900.jpg" />
+    <Content Include="images\slider-image-3-1920x900.jpg" />
+    <Content Include="images\team-image-1-646x680.jpg" />
+    <Content Include="images\team-image-2-646x680.jpg" />
+    <Content Include="images\team-image-3-646x680.jpg" />
+    <Content Include="images\team-image-4-646x680.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\Flaticon.woff" />
@@ -285,7 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
