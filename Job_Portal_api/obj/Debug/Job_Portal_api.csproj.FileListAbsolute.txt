@@ -259,3 +259,9 @@ C:\Users\Rony\source\repos\Job\JobPortalSystem\Job_Portal_api\obj\Debug\Job_Port
 C:\Users\Rony\source\repos\Job\JobPortalSystem\Job_Portal_api\obj\Debug\Job_Portal_api.pdb
 C:\Users\Rony\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\AutoMapper.dll
 C:\Users\Rony\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\AutoMapper.xml
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\AutoMapper.dll
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\EntityFramework.dll
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\EntityFramework.SqlServer.dll
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\AutoMapper.xml
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\EntityFramework.xml
+C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\Job_Portal_api\bin\EntityFramework.SqlServer.xml
