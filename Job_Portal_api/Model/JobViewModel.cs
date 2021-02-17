@@ -20,6 +20,7 @@ namespace Job_Portal_api.Model
         public string MinQulafication { get; set; }
         public string JobSkill { get; set; }
 
-        public CategoryViewModel JobCategory { get; set; }
+        public virtual CompanyViewModel Company { get; set; }
+        public virtual CategoryViewModel JobCategory { get; set; }
     }
 }

@@ -25,7 +25,10 @@ namespace Job_Portal_api.Data
         public string JobPos { get; set; }
         public string MinQulafication { get; set; }
         public string JobSkill { get; set; }
+        public Nullable<int> MinExp { get; set; }
+        public Nullable<int> MaxExp { get; set; }
     
+        public virtual Company Company { get; set; }
         public virtual JobCategory JobCategory { get; set; }
     }
 }

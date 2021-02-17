@@ -4,7 +4,69 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="jobpotaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="jobpotaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ComapanyId" />
+          </Key>
+          <Property Name="ComapanyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyDesc" Type="varchar(max)" />
+          <Property Name="CompanyBranchAddr" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="JobCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -29,7 +91,109 @@
           <Property Name="JobPos" Type="varchar(max)" />
           <Property Name="MinQulafication" Type="varchar(max)" />
           <Property Name="JobSkill" Type="varchar(max)" />
+          <Property Name="MinExp" Type="int" />
+          <Property Name="MaxExp" Type="int" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="UserContactNo" Type="varchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="50" />
+          <Property Name="Addr" Type="varchar(max)" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" />
+          <Property Name="10thBoard" Type="varchar" MaxLength="50" />
+          <Property Name="10thPercentage" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="HSBoard" Type="varchar" MaxLength="50" />
+          <Property Name="HSPercentage" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="UGUnivercity" Type="varchar" MaxLength="50" />
+          <Property Name="UGCollege" Type="varchar" MaxLength="50" />
+          <Property Name="UGPercentage" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PGUniversity" Type="varchar" MaxLength="50" />
+          <Property Name="PGCollege" Type="varchar" MaxLength="50" />
+          <Property Name="PGPercentage" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Skill1" Type="varchar" MaxLength="50" />
+          <Property Name="Skill2" Type="varchar" MaxLength="50" />
+          <Property Name="Skill3" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentOfcName" Type="varchar(max)" />
+          <Property Name="CurrentDesignation" Type="varchar(max)" />
+          <Property Name="CurrentySalary" Type="varchar(max)" />
+          <Property Name="TotalYearOfExp" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentLoc" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="CvPath" Type="varchar(max)" />
+          <Property Name="AlternatePhno" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDesc_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ComapanyId" />
+            </Principal>
+            <Dependent Role="JobDesc">
+              <PropertyRef Name="ComapanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JobDesc_JobCategory">
           <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
           <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
@@ -43,8 +207,35 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="jobpotaldbModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobDesc" EntityType="Self.JobDesc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDesc_Company" Association="Self.FK_JobDesc_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="JobDesc" EntitySet="JobDesc" />
+          </AssociationSet>
           <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
             <End Role="JobCategory" EntitySet="JobCategory" />
             <End Role="JobDesc" EntitySet="JobDesc" />
@@ -54,6 +245,18 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="jobpotaldbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ComapanyId" />
+          </Key>
+          <Property Name="ComapanyId" Type="Guid" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyBranchAddr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobDescs" Relationship="Self.FK_JobDesc_Company" FromRole="Company" ToRole="JobDesc" />
+        </EntityType>
         <EntityType Name="JobCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -79,8 +282,23 @@
           <Property Name="JobPos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MinQulafication" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="JobSkill" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MinExp" Type="Int32" />
+          <Property Name="MaxExp" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_JobDesc_Company" FromRole="JobDesc" ToRole="Company" />
           <NavigationProperty Name="JobCategory" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobDesc" ToRole="JobCategory" />
         </EntityType>
+        <Association Name="FK_JobDesc_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ComapanyId" />
+            </Principal>
+            <Dependent Role="JobDesc">
+              <PropertyRef Name="ComapanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JobDesc_JobCategory">
           <End Role="JobCategory" Type="Self.JobCategory" Multiplicity="0..1" />
           <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="*" />
@@ -94,19 +312,166 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="jobpotaldbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="JobCategories" EntityType="Self.JobCategory" />
           <EntitySet Name="JobDescs" EntityType="Self.JobDesc" />
+          <AssociationSet Name="FK_JobDesc_Company" Association="Self.FK_JobDesc_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="JobDesc" EntitySet="JobDescs" />
+          </AssociationSet>
           <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
             <End Role="JobCategory" EntitySet="JobCategories" />
             <End Role="JobDesc" EntitySet="JobDescs" />
           </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="jobpotaldbModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="jobpotaldbModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="jobpotaldbModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="jobpotaldbModel.AspNetUser" />
+          <EntitySet Name="Users" EntityType="jobpotaldbModel.User" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="jobpotaldbModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="jobpotaldbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="jobpotaldbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Addr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C10thBoard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C10thPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HSBoard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HSPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UGUnivercity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UGCollege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UGPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PGUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PGCollege" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PGPercentage" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Skill1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Skill2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Skill3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentOfcName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentDesignation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentySalary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalYearOfExp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentLoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CvPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlternatePhno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="jobpotaldbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="jobpotaldbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="jobpotaldbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="jobpotaldbModelStoreContainer" CdmEntityContainer="jobpotaldbEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="jobpotaldbModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ComapanyId" ColumnName="ComapanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyContactNo" ColumnName="CompanyContactNo" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyDesc" ColumnName="CompanyDesc" />
+                <ScalarProperty Name="CompanyBranchAddr" ColumnName="CompanyBranchAddr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="JobCategories">
             <EntityTypeMapping TypeName="jobpotaldbModel.JobCategory">
               <MappingFragment StoreEntitySet="JobCategory">
@@ -131,9 +496,97 @@
                 <ScalarProperty Name="JobPos" ColumnName="JobPos" />
                 <ScalarProperty Name="MinQulafication" ColumnName="MinQulafication" />
                 <ScalarProperty Name="JobSkill" ColumnName="JobSkill" />
+                <ScalarProperty Name="MinExp" ColumnName="MinExp" />
+                <ScalarProperty Name="MaxExp" ColumnName="MaxExp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="jobpotaldbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="jobpotaldbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AlternatePhno" ColumnName="AlternatePhno" />
+                <ScalarProperty Name="CvPath" ColumnName="CvPath" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CurrentLoc" ColumnName="CurrentLoc" />
+                <ScalarProperty Name="TotalYearOfExp" ColumnName="TotalYearOfExp" />
+                <ScalarProperty Name="CurrentySalary" ColumnName="CurrentySalary" />
+                <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+                <ScalarProperty Name="CurrentOfcName" ColumnName="CurrentOfcName" />
+                <ScalarProperty Name="Skill3" ColumnName="Skill3" />
+                <ScalarProperty Name="Skill2" ColumnName="Skill2" />
+                <ScalarProperty Name="Skill1" ColumnName="Skill1" />
+                <ScalarProperty Name="PGPercentage" ColumnName="PGPercentage" />
+                <ScalarProperty Name="PGCollege" ColumnName="PGCollege" />
+                <ScalarProperty Name="PGUniversity" ColumnName="PGUniversity" />
+                <ScalarProperty Name="UGPercentage" ColumnName="UGPercentage" />
+                <ScalarProperty Name="UGCollege" ColumnName="UGCollege" />
+                <ScalarProperty Name="UGUnivercity" ColumnName="UGUnivercity" />
+                <ScalarProperty Name="HSPercentage" ColumnName="HSPercentage" />
+                <ScalarProperty Name="HSBoard" ColumnName="HSBoard" />
+                <ScalarProperty Name="C10thPercentage" ColumnName="10thPercentage" />
+                <ScalarProperty Name="C10thBoard" ColumnName="10thBoard" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserContactNo" ColumnName="UserContactNo" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="jobpotaldbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Job Agency Website Template</title>
+    <title>JobPortal</title>
 
     <!-- Bootstrap core CSS -->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
@@ -67,13 +67,16 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="@Href("~/")">
                                 Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="jobs.html">Jobs</a>
+                            <a class="nav-link" href="@Href("~/Job/")">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Href("~/Category/")">Category</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
