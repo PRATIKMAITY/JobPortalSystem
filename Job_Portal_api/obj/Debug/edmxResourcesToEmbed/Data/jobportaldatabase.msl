@@ -72,6 +72,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Roleid" ColumnName="Roleid" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
           <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
@@ -90,6 +91,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="jobpotaldbModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="aspnetuserid" ColumnName="aspnetuserid" />
+          <ScalarProperty Name="Joinedon" ColumnName="Joinedon" />
           <ScalarProperty Name="AlternatePhno" ColumnName="AlternatePhno" />
           <ScalarProperty Name="CvPath" ColumnName="CvPath" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
