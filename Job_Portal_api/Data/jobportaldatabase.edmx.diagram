@@ -4,24 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="303969135a7247d69cf53b6507c5c704" Name="Diagram1">
-        <EntityTypeShape EntityType="jobpotaldbModel.Company" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobpotaldbModel.JobCategory" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobpotaldbModel.JobDesc" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="e036421a7add4f039b8a90f1bdb0743b" Name="Diagram1">
+        <EntityTypeShape EntityType="jobpotaldbModel.ApplyJob" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.AspNetRole" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.Company" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.JobCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.JobDesc" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobpotaldbModel.User" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_JobDesc" ManuallyRouted="false" />
+        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="jobpotaldbModel.FK_AspNetUsers_AspNetRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="jobpotaldbModel.FK_Users_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="jobpotaldbModel.FK_JobDesc_Company" ManuallyRouted="false" />
         <AssociationConnector Association="jobpotaldbModel.FK_JobDesc_JobCategory" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="jobpotaldbModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
-        <EntityTypeShape EntityType="jobpotaldbModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="1" />
-        <EntityTypeShape EntityType="jobpotaldbModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="3.75" />
-        <EntityTypeShape EntityType="jobpotaldbModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
-        <EntityTypeShape EntityType="jobpotaldbModel.User" Width="1.5" PointX="3.375" PointY="5.75" />
-        <AssociationConnector Association="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="jobpotaldbModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="jobpotaldbModel.ApplyJob" Width="1.5" PointX="5.625" PointY="6.5" />
-        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_JobDesc" />
-        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_Users" />
-        <AssociationConnector Association="jobpotaldbModel.FK_Users_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

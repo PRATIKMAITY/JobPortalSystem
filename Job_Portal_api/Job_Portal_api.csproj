@@ -205,12 +205,6 @@
     <Compile Include="Data\AspNetUser.cs">
       <DependentUpon>jobportaldatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\AspNetUserClaim.cs">
-      <DependentUpon>jobportaldatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\AspNetUserLogin.cs">
-      <DependentUpon>jobportaldatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Company.cs">
       <DependentUpon>jobportaldatabase.tt</DependentUpon>
     </Compile>

@@ -118,17 +118,17 @@
       </div>
       <div class="modal-body">
           <div class="col-md-12">
-              <input type="text" name="abc" value="" placeholder="Enter name" />
+              <input type="text" id="Uname" name="Name" value="" placeholder="Enter name" />
           </div>
           <div class="col-md-12">
-              <input type="text" name="dfefd" value="" placeholder="Enter Password" />
+              <input type="password" id="Upass" name="Password" value="" placeholder="Enter Password" />
           </div>
 
           
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="login" class="btn btn-primary">Login</button>
       </div>
     </div>
   </div>
@@ -206,14 +206,14 @@
 
                     <ul class="navbar-nav ml-auto">
 
-                        @*<li class="nav-item">
+                        <li class="nav-item" id="sin">
                             <a class="nav-link" data-toggle="modal" data-target="#signinModal" href="@Href("~/Job/")">Sign In</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="reg">
                             <a class="nav-link" href="@Href("~/Job/")">Register</a>
-                        </li>*@
+                        </li>
 
-                        <li class="nav-item" style="width:260px;">
+                        <li class="nav-item" style="width:260px;display:none;" id="profile" >
                             <a class="nav-link" href="#">
                                 <span id="profilepic"></span> &nbsp; Hi, Indranil<div id="UserID" style="width: 200px;display: inline;">
                                 </div>
@@ -336,11 +336,87 @@
 
 </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" integrity="sha512-aUhL2xOCrpLEuGD5f6tgHbLYEXRpYZ8G5yD+WlFrXrPy2IrWBlu6bih5C9H6qGsgqnU6mgx6KtU8TreHpASprw==" crossorigin="anonymous"></script>
+
 <script>
+    var path = "https://localhost:44359/api/";
+    setCookie = function setCookie(cname, cvalue) {
+        var d = new Date();
+        d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    };
 
     $('#profilepic').html('<img src="../images/about-1-570x350.jpg" alt=""/ style="height:30px;width:30px; border-radius: 50%;">');
 
+    $("#login").click(function () {
+        var user = {};
+        user.Email = $('#Uname').val();
+        user.Password = $('#Upass').val();
+        $.ajax({
+            url: path + 'auth/Login',
+            type: 'POST',
+            data: user,
+            success: function (response) {
+                //console.log(response);
+                if (response.Succeeded) {
+                    var islogin = 1;
+                    $.cookie('UserId', response.UserId, { expires: 7, path: '/' });
+                    $.cookie('Token', response.Token, { expires: 7, path: '/' });
+                    $.cookie('UserName', response.UserName, { expires: 7, path: '/' });
+                    $.cookie('Role', response.rolename, { expires: 7, path: '/' });
+                    $.cookie('LogInFlag', islogin, { expires: 7, path: '/' });
+                    
+                    if (response.rolename == "Student") {
+                        Checklogin();
+                        window.location.reload();
+                    }
+                    else {
 
+                        window.location.href = '/Admin';
+                    }
+                }
+                else {
+                    alert(response.Message);
+                }
+
+
+              
+
+            },
+            error: function () {
+                console.log('Error in Operation');
+            }
+        });
+    });
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function Checklogin() {
+        var res = getCookie('LogInFlag');
+        if (res == 1) {
+
+            document.getElementById("sin").style.visibility = 'hidden';
+            document.getElementById("reg").style.visibility = 'hidden';
+            document.getElementById("profile").style.visibility = 'visible';
+        }
+
+    }
 
 </script>
 
