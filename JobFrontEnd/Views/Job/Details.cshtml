@@ -8,6 +8,11 @@ ViewBag.Title = "Job Details";
 
 
 
+
+
+
+
+
 <div class="page-heading header-text">
     <div class="container">
         <div class="row">
@@ -21,6 +26,33 @@ ViewBag.Title = "Job Details";
         </div>
     </div>
 </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div class="services">
     <div class="container">
@@ -42,10 +74,10 @@ ViewBag.Title = "Job Details";
                     <img src="~/assets/images/product-1-720x480.jpg" alt="" class="img-fluid wc-image" style="width:360px; height:240px;">
                 </div>
                 <br>
-                
-                
-                
-                <a href="property-details.html" class="filled-button text-center" style="display: block">Apply for this Job</a>
+
+
+
+                <a href="property-details.html" class="filled-button text-center" style="display: block" data-toggle="modal" data-target="#exampleModal">Apply for this Job</a>
 
                 <br>
             </div>
@@ -200,7 +232,5 @@ ViewBag.Title = "Job Details";
         <br>
     </div>
 </div>
-
-
 
 
