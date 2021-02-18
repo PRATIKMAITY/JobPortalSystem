@@ -10,6 +10,7 @@
 namespace Job_Portal_api.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -25,7 +26,14 @@ namespace Job_Portal_api.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<JobCategory> JobCategories { get; set; }
         public virtual DbSet<JobDesc> JobDescs { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public IEnumerable<object> User { get; internal set; }
     }
 }

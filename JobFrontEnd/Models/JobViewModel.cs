@@ -5,8 +5,8 @@ using System.Web;
 
 namespace JobFrontEnd.Models
 {
-    public class JobViewModel
-    {
+	public class JobViewModel
+	{
         public Guid JobId { get; set; }
         public string JobName { get; set; }
         public Guid ComapanyId { get; set; }
@@ -19,6 +19,10 @@ namespace JobFrontEnd.Models
         public string MinQulafication { get; set; }
         public string JobSkill { get; set; }
 
-        public CategoryViewModel JobCategory { get; set; }
+        public virtual CompanyViewModel company { get; set; }
+
+        public virtual CategoryViewModel JobCategory { get; set; }
+
+
     }
 }
