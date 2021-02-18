@@ -60,7 +60,7 @@ namespace Job_Portal_api.Controllers
                     //    RoleId = role.Id,
                     //    UserId = aspnetuser.Id
                     //};
-                    aspnetuser.AspNetRoles.Add(role);
+                  
 
                     var agent = new User
                     {

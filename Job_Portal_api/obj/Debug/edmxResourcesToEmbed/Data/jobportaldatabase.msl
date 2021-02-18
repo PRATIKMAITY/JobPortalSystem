@@ -1,6 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="jobpotaldbModelStoreContainer" CdmEntityContainer="jobpotaldbEntities">
+    <EntitySetMapping Name="ApplyJobs">
+      <EntityTypeMapping TypeName="jobpotaldbModel.ApplyJob">
+        <MappingFragment StoreEntitySet="ApplyJob">
+          <ScalarProperty Name="ApplyId" ColumnName="ApplyId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Companies">
       <EntityTypeMapping TypeName="jobpotaldbModel.Company">
         <MappingFragment StoreEntitySet="Company">
@@ -42,102 +79,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetRole">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUserClaim">
-        <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUserLogin">
-        <MappingFragment StoreEntitySet="AspNetUserLogins">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="jobpotaldbModel.AspNetUser">
-        <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="Roleid" ColumnName="Roleid" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="jobpotaldbModel.User">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="aspnetuserid" ColumnName="aspnetuserid" />
-          <ScalarProperty Name="Joinedon" ColumnName="Joinedon" />
-          <ScalarProperty Name="AlternatePhno" ColumnName="AlternatePhno" />
-          <ScalarProperty Name="CvPath" ColumnName="CvPath" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="CurrentLoc" ColumnName="CurrentLoc" />
-          <ScalarProperty Name="TotalYearOfExp" ColumnName="TotalYearOfExp" />
-          <ScalarProperty Name="CurrentySalary" ColumnName="CurrentySalary" />
-          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
-          <ScalarProperty Name="CurrentOfcName" ColumnName="CurrentOfcName" />
-          <ScalarProperty Name="Skill3" ColumnName="Skill3" />
-          <ScalarProperty Name="Skill2" ColumnName="Skill2" />
-          <ScalarProperty Name="Skill1" ColumnName="Skill1" />
-          <ScalarProperty Name="PGPercentage" ColumnName="PGPercentage" />
-          <ScalarProperty Name="PGCollege" ColumnName="PGCollege" />
-          <ScalarProperty Name="PGUniversity" ColumnName="PGUniversity" />
-          <ScalarProperty Name="UGPercentage" ColumnName="UGPercentage" />
-          <ScalarProperty Name="UGCollege" ColumnName="UGCollege" />
-          <ScalarProperty Name="UGUnivercity" ColumnName="UGUnivercity" />
-          <ScalarProperty Name="HSPercentage" ColumnName="HSPercentage" />
-          <ScalarProperty Name="HSBoard" ColumnName="HSBoard" />
-          <ScalarProperty Name="C10thPercentage" ColumnName="10thPercentage" />
-          <ScalarProperty Name="C10thBoard" ColumnName="10thBoard" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="Addr" ColumnName="Addr" />
-          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
-          <ScalarProperty Name="UserContactNo" ColumnName="UserContactNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="jobpotaldbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-      <EndProperty Name="AspNetRole">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <EntitySetMapping Name="ApplyJobs">
-      <EntityTypeMapping TypeName="jobpotaldbModel.ApplyJob">
-        <MappingFragment StoreEntitySet="ApplyJob">
-          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="JobId" ColumnName="JobId" />
-          <ScalarProperty Name="ApplyId" ColumnName="ApplyId" />
+          <ScalarProperty Name="UserContactNo" ColumnName="UserContactNo" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="Addr" ColumnName="Addr" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="C10thBoard" ColumnName="10thBoard" />
+          <ScalarProperty Name="C10thPercentage" ColumnName="10thPercentage" />
+          <ScalarProperty Name="HSBoard" ColumnName="HSBoard" />
+          <ScalarProperty Name="HSPercentage" ColumnName="HSPercentage" />
+          <ScalarProperty Name="UGUnivercity" ColumnName="UGUnivercity" />
+          <ScalarProperty Name="UGCollege" ColumnName="UGCollege" />
+          <ScalarProperty Name="UGPercentage" ColumnName="UGPercentage" />
+          <ScalarProperty Name="PGUniversity" ColumnName="PGUniversity" />
+          <ScalarProperty Name="PGCollege" ColumnName="PGCollege" />
+          <ScalarProperty Name="PGPercentage" ColumnName="PGPercentage" />
+          <ScalarProperty Name="Skill1" ColumnName="Skill1" />
+          <ScalarProperty Name="Skill2" ColumnName="Skill2" />
+          <ScalarProperty Name="Skill3" ColumnName="Skill3" />
+          <ScalarProperty Name="CurrentOfcName" ColumnName="CurrentOfcName" />
+          <ScalarProperty Name="CurrentDesignation" ColumnName="CurrentDesignation" />
+          <ScalarProperty Name="CurrentySalary" ColumnName="CurrentySalary" />
+          <ScalarProperty Name="TotalYearOfExp" ColumnName="TotalYearOfExp" />
+          <ScalarProperty Name="CurrentLoc" ColumnName="CurrentLoc" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="CvPath" ColumnName="CvPath" />
+          <ScalarProperty Name="AlternatePhno" ColumnName="AlternatePhno" />
+          <ScalarProperty Name="Joinedon" ColumnName="Joinedon" />
+          <ScalarProperty Name="aspnetuserid" ColumnName="aspnetuserid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

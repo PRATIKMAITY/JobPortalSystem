@@ -34,9 +34,9 @@ namespace Job_Portal_api.Data
         public Nullable<int> MinExp { get; set; }
         public Nullable<int> MaxExp { get; set; }
     
-        public virtual Company Company { get; set; }
-        public virtual JobCategory JobCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ApplyJob> ApplyJobs { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual JobCategory JobCategory { get; set; }
     }
 }
