@@ -59,6 +59,7 @@
     <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Roleid" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -129,6 +130,8 @@
     <Property Name="Gender" Type="varchar" MaxLength="50" />
     <Property Name="CvPath" Type="varchar(max)" />
     <Property Name="AlternatePhno" Type="varchar" MaxLength="50" />
+    <Property Name="Joinedon" Type="datetime" />
+    <Property Name="aspnetuserid" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <Association Name="FK_ApplyJob_JobDesc">
     <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="0..1" />
@@ -234,6 +237,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Users_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="aspnetuserid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="jobpotaldbModelStoreContainer">
     <EntitySet Name="ApplyJob" EntityType="Self.ApplyJob" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -276,6 +291,10 @@
     <AssociationSet Name="FK_JobDesc_JobCategory" Association="Self.FK_JobDesc_JobCategory">
       <End Role="JobCategory" EntitySet="JobCategory" />
       <End Role="JobDesc" EntitySet="JobDesc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_AspNetUsers" Association="Self.FK_Users_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

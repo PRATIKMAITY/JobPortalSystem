@@ -105,6 +105,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="ApplyJob" EntitySet="ApplyJobs" />
     </AssociationSet>
+    <AssociationSet Name="FK_Users_AspNetUsers" Association="jobpotaldbModel.FK_Users_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AspNetRole">
     <Key>
@@ -154,6 +158,8 @@
     <NavigationProperty Name="AspNetUserClaims" Relationship="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="AspNetRoles" Relationship="jobpotaldbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <Property Name="Roleid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="jobpotaldbModel.FK_Users_AspNetUsers" FromRole="AspNetUser" ToRole="User" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -187,6 +193,9 @@
     <Property Name="CvPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="AlternatePhno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ApplyJobs" Relationship="jobpotaldbModel.FK_ApplyJob_Users" FromRole="User" ToRole="ApplyJob" />
+    <Property Name="Joinedon" Type="DateTime" Precision="3" />
+    <Property Name="aspnetuserid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="jobpotaldbModel.FK_Users_AspNetUsers" FromRole="User" ToRole="AspNetUser" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -252,6 +261,18 @@
       </Principal>
       <Dependent Role="ApplyJob">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_AspNetUsers">
+    <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="jobpotaldbModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="aspnetuserid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

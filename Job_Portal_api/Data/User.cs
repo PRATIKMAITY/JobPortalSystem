@@ -47,8 +47,11 @@ namespace Job_Portal_api.Data
         public string Gender { get; set; }
         public string CvPath { get; set; }
         public string AlternatePhno { get; set; }
+        public Nullable<System.DateTime> Joinedon { get; set; }
+        public string aspnetuserid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ApplyJob> ApplyJobs { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

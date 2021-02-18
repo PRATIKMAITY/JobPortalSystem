@@ -34,5 +34,8 @@ namespace Job_Portal_api.Model
         public string Gender { get; set; }
         public string CvPath { get; set; }
         public string AlternatePhno { get; set; }
+        public Nullable<System.DateTime> Joinedon { get; set; }
+
+        public string aspnetuserid { get; set; }
     }
 }
