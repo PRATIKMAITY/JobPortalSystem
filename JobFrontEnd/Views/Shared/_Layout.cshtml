@@ -47,9 +47,92 @@
             vertical-align: middle;
         }
     </style>
+    <style type="text/css">
+        #tfheader {
+            background-color: #c3dfef;
+        }
+
+        #tfnewsearch {
+            float: right;
+            padding: 20px;
+        }
+
+        .tftextinput {
+            margin: 0;
+            padding: 5px 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            border: 1px solid #0076a3;
+            border-right: 0px;
+            border-top-left-radius: 5px 5px;
+            border-bottom-left-radius: 5px 5px;
+        }
+
+        .tfbutton {
+            margin: 0;
+            padding: 5px 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            border: solid 1px #0076a3;
+            border-right: 0px;
+            background: #0095cd;
+            background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+            background: -moz-linear-gradient(top, #00adee, #0078a5);
+            border-top-right-radius: 5px 5px;
+            border-bottom-right-radius: 5px 5px;
+        }
+
+            .tfbutton:hover {
+                text-decoration: none;
+                background: #007ead;
+                background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+                background: -moz-linear-gradient(top, #0095cc, #00678e);
+            }
+            /* Fixes submit button height problem in Firefox */
+            .tfbutton::-moz-focus-inner {
+                border: 0;
+            }
+
+        .tfclear {
+            clear: both;
+        }
+    </style>
+
 </head>
 
 <body>
+
+    <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign In Or Log In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+              <input type="text" name="abc" value="" placeholder="Enter name" />
+          </div>
+          <div class="col-md-12">
+              <input type="text" name="dfefd" value="" placeholder="Enter Password" />
+          </div>
+
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -117,6 +200,28 @@
                             <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                     </ul>
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    <ul class="navbar-nav ml-auto">
+
+                        @*<li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" data-target="#signinModal" href="@Href("~/Job/")">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Href("~/Job/")">Register</a>
+                        </li>*@
+
+                        <li class="nav-item" style="width:260px;">
+                            <a class="nav-link" href="#">
+                                <span id="profilepic"></span> &nbsp; Hi, Indranil<div id="UserID" style="width: 200px;display: inline;">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>   
+               
+                    
                 </div>
             </div>
         </nav>
@@ -208,7 +313,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="~/Content/jquery.min.js"></script>
     <script src="~/Content/bootstrap.bundle.min.js"></script>
-    
+
 
 
 
@@ -231,4 +336,14 @@
 
 </body>
 </html>
+<script>
+
+    $('#profilepic').html('<img src="../images/about-1-570x350.jpg" alt=""/ style="height:30px;width:30px; border-radius: 50%;">');
+
+
+
+</script>
+
+
+@RenderSection("scripts", required: false)
 

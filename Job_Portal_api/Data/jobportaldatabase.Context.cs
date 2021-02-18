@@ -10,7 +10,6 @@
 namespace Job_Portal_api.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -34,6 +33,6 @@ namespace Job_Portal_api.Data
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public IEnumerable<object> User { get; internal set; }
+        public virtual DbSet<ApplyJob> ApplyJobs { get; set; }
     }
 }

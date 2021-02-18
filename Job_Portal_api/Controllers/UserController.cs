@@ -159,5 +159,21 @@ namespace Job_Portal_api.Controllers
             return model;
 
         }
+
+        [HttpGet]
+        [ActionName("ApplyJobChecking")]
+        public  string CheckJobapply(string JobId,string userid)
+        {
+            var query = _db.ApplyJobs.Where(a => a.UserId.ToString() == userid && a.JobId.ToString()==JobId).SingleOrDefault();
+
+            if(query!=null)
+            {
+                return "Already Applied";
+            }
+
+            return "Not Applied";
+
+
+        }
     }
 }

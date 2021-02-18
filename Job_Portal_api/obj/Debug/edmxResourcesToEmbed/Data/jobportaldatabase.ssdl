@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="jobpotaldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplyJob">
+    <Key>
+      <PropertyRef Name="ApplyId" />
+    </Key>
+    <Property Name="ApplyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="JobId" Type="uniqueidentifier" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="ApplyDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
       <PropertyRef Name="Id" />
@@ -121,6 +130,30 @@
     <Property Name="CvPath" Type="varchar(max)" />
     <Property Name="AlternatePhno" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_ApplyJob_JobDesc">
+    <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="0..1" />
+    <End Role="ApplyJob" Type="Self.ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDesc">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplyJob_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="ApplyJob" Type="Self.ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -202,6 +235,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="jobpotaldbModelStoreContainer">
+    <EntitySet Name="ApplyJob" EntityType="Self.ApplyJob" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -211,6 +245,14 @@
     <EntitySet Name="JobCategory" EntityType="Self.JobCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="JobDesc" EntityType="Self.JobDesc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ApplyJob_JobDesc" Association="Self.FK_ApplyJob_JobDesc">
+      <End Role="JobDesc" EntitySet="JobDesc" />
+      <End Role="ApplyJob" EntitySet="ApplyJob" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplyJob_Users" Association="Self.FK_ApplyJob_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ApplyJob" EntitySet="ApplyJob" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />

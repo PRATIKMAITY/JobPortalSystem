@@ -18,6 +18,9 @@
         <AssociationConnector Association="jobpotaldbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="jobpotaldbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="jobpotaldbModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="jobpotaldbModel.ApplyJob" Width="1.5" PointX="5.625" PointY="6.5" />
+        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_JobDesc" />
+        <AssociationConnector Association="jobpotaldbModel.FK_ApplyJob_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

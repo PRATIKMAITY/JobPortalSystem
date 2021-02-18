@@ -14,6 +14,12 @@ namespace Job_Portal_api.Data
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.ApplyJobs = new HashSet<ApplyJob>();
+        }
+    
         public System.Guid UserId { get; set; }
         public string UserName { get; set; }
         public string UserContactNo { get; set; }
@@ -41,5 +47,8 @@ namespace Job_Portal_api.Data
         public string Gender { get; set; }
         public string CvPath { get; set; }
         public string AlternatePhno { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplyJob> ApplyJobs { get; set; }
     }
 }

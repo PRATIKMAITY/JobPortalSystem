@@ -41,6 +41,7 @@
     <Property Name="MaxExp" Type="Int32" />
     <NavigationProperty Name="Company" Relationship="Self.FK_JobDesc_Company" FromRole="JobDesc" ToRole="Company" />
     <NavigationProperty Name="JobCategory" Relationship="Self.FK_JobDesc_JobCategory" FromRole="JobDesc" ToRole="JobCategory" />
+    <NavigationProperty Name="ApplyJobs" Relationship="jobpotaldbModel.FK_ApplyJob_JobDesc" FromRole="JobDesc" ToRole="ApplyJob" />
   </EntityType>
   <Association Name="FK_JobDesc_Company">
     <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
@@ -94,6 +95,15 @@
     <AssociationSet Name="AspNetUserRoles" Association="jobpotaldbModel.AspNetUserRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="ApplyJobs" EntityType="jobpotaldbModel.ApplyJob" />
+    <AssociationSet Name="FK_ApplyJob_JobDesc" Association="jobpotaldbModel.FK_ApplyJob_JobDesc">
+      <End Role="JobDesc" EntitySet="JobDescs" />
+      <End Role="ApplyJob" EntitySet="ApplyJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplyJob_Users" Association="jobpotaldbModel.FK_ApplyJob_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ApplyJob" EntitySet="ApplyJobs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AspNetRole">
@@ -176,6 +186,7 @@
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CvPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="AlternatePhno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ApplyJobs" Relationship="jobpotaldbModel.FK_ApplyJob_Users" FromRole="User" ToRole="ApplyJob" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -208,5 +219,40 @@
   <Association Name="AspNetUserRoles">
     <End Type="jobpotaldbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="jobpotaldbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="ApplyJob">
+    <Key>
+      <PropertyRef Name="ApplyId" />
+    </Key>
+    <Property Name="ApplyId" Type="Guid" Nullable="false" />
+    <Property Name="JobId" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="JobDesc" Relationship="jobpotaldbModel.FK_ApplyJob_JobDesc" FromRole="ApplyJob" ToRole="JobDesc" />
+    <NavigationProperty Name="User" Relationship="jobpotaldbModel.FK_ApplyJob_Users" FromRole="ApplyJob" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_ApplyJob_JobDesc">
+    <End Type="jobpotaldbModel.JobDesc" Role="JobDesc" Multiplicity="0..1" />
+    <End Type="jobpotaldbModel.ApplyJob" Role="ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDesc">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplyJob_Users">
+    <End Type="jobpotaldbModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="jobpotaldbModel.ApplyJob" Role="ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

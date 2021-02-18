@@ -173,6 +173,9 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Data\ApplyJob.cs">
+      <DependentUpon>jobportaldatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\AspNetRole.cs">
       <DependentUpon>jobportaldatabase.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\ApplyJobModel.cs" />
     <Compile Include="Model\CategoryViewModel.cs" />
     <Compile Include="Model\CompanyViewModel.cs" />
     <Compile Include="Model\JobViewModel.cs" />

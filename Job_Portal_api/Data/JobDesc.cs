@@ -14,6 +14,12 @@ namespace Job_Portal_api.Data
     
     public partial class JobDesc
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public JobDesc()
+        {
+            this.ApplyJobs = new HashSet<ApplyJob>();
+        }
+    
         public System.Guid JobId { get; set; }
         public string JobName { get; set; }
         public Nullable<System.Guid> ComapanyId { get; set; }
@@ -30,5 +36,7 @@ namespace Job_Portal_api.Data
     
         public virtual Company Company { get; set; }
         public virtual JobCategory JobCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplyJob> ApplyJobs { get; set; }
     }
 }

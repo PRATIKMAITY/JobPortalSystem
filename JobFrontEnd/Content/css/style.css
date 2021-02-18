@@ -1,9 +1,11 @@
 body {
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: aliceblue;
+	
 }
 p {
 	margin-bottom: 0px;
@@ -391,6 +393,7 @@ header .navbar {
 	height:95vh;
 }
 
+/*for Home page*/
 .Modern-Slider .item-1 .img-fill {
 	background-image: url(../images/slider-image-1-1920x900.jpg);
 }
@@ -402,6 +405,20 @@ header .navbar {
 .Modern-Slider .item-3 .img-fill {
 	background-image: url(../images/slider-image-3-1920x900.jpg);
 }
+
+/*for Job Page*/
+.Modern-Slider .item1-1 .img-fill {
+	background-image: url(../images/about-fullscreen-image-1-1920x600.jpg);
+}
+
+.Modern-Slider .item1-2 .img-fill {
+	background-image: url(../images/banner-image-1-1920x500.jpg);
+}
+
+.Modern-Slider .item1-3 .img-fill {
+	background-image: url(../images/blog-image-fullscren-1-1920x700.jpg);
+}
+
 
 .Modern-Slider .NextArrow{
   position:absolute;

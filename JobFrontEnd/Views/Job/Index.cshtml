@@ -6,7 +6,7 @@ ViewBag.Title = "Job Page";
 <div class="main-banner header-text" id="top">
     <div class="Modern-Slider">
         <!-- Item -->
-        <div class="item item-1">
+        <div class="item item1-1">
             <div class="img-fill">
                 <div class="text-content">
                     <h6>lorem ipsum dolor sit amet!</h6>
@@ -17,8 +17,9 @@ ViewBag.Title = "Job Page";
             </div>
         </div>
         <!-- // Item -->
+       
         <!-- Item -->
-        <div class="item item-2">
+        <div class="item item1-2">
             <div class="img-fill">
                 <div class="text-content">
                     <h6>magni deserunt dolorem harum quas!</h6>
@@ -30,7 +31,7 @@ ViewBag.Title = "Job Page";
         </div>
         <!-- // Item -->
         <!-- Item -->
-        <div class="item item-3">
+        <div class="item item1-3">
             <div class="img-fill">
                 <div class="text-content">
                     <h6>alias officia qui quae vitae natus!</h6>
@@ -43,13 +44,30 @@ ViewBag.Title = "Job Page";
         <!-- // Item -->
     </div>
 </div>
+
+
+
+
 <div class="services">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-heading">
-                    <h2>Featured <em></em></h2>
-                    
+                    <h2>Featured <em>Job for You</em></h2>
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div id="tfheader">
+                    <form id="tfnewsearch" method="get" action="http://www.google.com">
+                        <input type="text" class="tftextinput" name="q" size="21" maxlength="120" placeholder="Search Job">
+                        <input type="text" class="tftextinput" name="q" size="21" maxlength="120" placeholder="Enter Job Location">
+
+                        <input type="submit" value="search" class="tfbutton">
+
+                    </form>
+                    <div class="tfclear"></div>
                 </div>
             </div>
 
@@ -58,17 +76,17 @@ ViewBag.Title = "Job Page";
                 <div class="col-md-4">
                     <div class="service-item">
                         <a href="@Url.Action("Details", "Job", new {jobid =item.JobId})">
-                            <img src="~/images/product-1-720x480.jpg" alt="">
+                            <img src="~/images/product-6-720x480.jpg" alt="" style="height:200px; width:200px;border-radius:70%;">
                             <div class="down-content">
                                 <h4>@item.JobName</h4>
                                 <div style="margin-bottom:10px;">
-                                    <span> <sup>Rs. </sup>@item.ExpextedSalary</span>
+                                    <span>Type : @item.JobType</span>
                                 </div>
-                                <p>@item.MinQulafication</p>
+                                <p>Req Skill : @item.JobSkill</p>
 
-                                <a href="@Url.Action("Details", "Job", new {jobid =item.JobId})" class="filled-button">View More</a>
+                                <a href="@Url.Action("Details", "Job", new {jobid =item.JobId})" class="filled-button">View Details</a>
                             </div>
-                            </a>
+                        </a>
                     </div>
 
                     <br>
