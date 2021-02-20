@@ -156,3 +156,5 @@ C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\obj\Debug\JobFrontEnd
 C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\obj\Debug\JobFrontEnd.csproj.CopyComplete
 C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\obj\Debug\JobFrontEnd.dll
 C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\obj\Debug\JobFrontEnd.pdb
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\System.Net.Http.Formatting.dll
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\System.Net.Http.Formatting.xml

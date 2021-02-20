@@ -19,9 +19,25 @@ namespace JobFrontEnd.Controllers
         public async Task<ActionResult> Index()
         {        
             var model = new HomeViewModel();
-         
+            object loggedin;
+           
+            try
+            {
+                loggedin= Request.Cookies["LogInFlag"].Value;
+                
+            }
+            catch (System.NullReferenceException ex)
+            {
+                // not logged in or null id.
+                loggedin = "0";
+            }
+            if(loggedin.ToString()=="1")
+            {
+                ViewBag.loginflagmvc = 1;
+            }
+
             // To get All Categories
-            
+
             var streamTask = await client.GetAsync(BaseUrl + "Category/GetAllCategory");
             if (streamTask.IsSuccessStatusCode)
             {

@@ -57,78 +57,6 @@ ViewBag.Title = "Job Details";
 <div class="services">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="tabs-content" style="display: block;">
-                    <h4>Description</h4>
-
-                    <p>@Model.JobDesc1</p>
-
-                </div>
-
-                <br>
-            </div>
-
-            <div class="col-md-4">
-                <br>
-                <div>
-                    <img src="~/assets/images/product-1-720x480.jpg" alt="" class="img-fluid wc-image" style="width:360px; height:240px;">
-                </div>
-                <br>
-
-
-
-                <button class="btn btn-primary" id="applybutton" style="display: block" data-toggle="modal" data-target="#exampleModal">Apply for this Job</button>
-
-                <br>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="tabs-content" style="display: block;">
-                    <h4>About Employer</h4>
-                    <p>@Model.company.CompanyDesc</p>
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="tabs-content">
-                    <h4>Contact Details</h4>
-
-                    <p>
-                        <span>Name</span>
-
-                        <br>
-
-                        <strong>@Model.company.CompanyName</strong>
-                    </p>
-
-                    <p>
-                        <span>Phone</span>
-
-                        <br>
-
-                        <strong>
-                            <a href="tel:@Model.company.CompanyContactNo">@Model.company.CompanyContactNo</a>
-                        </strong>
-                    </p>
-
-
-                    <p>
-                        <span>Email</span>
-
-                        <br>
-
-                        <strong>
-                            <a href="mailto: @Model.company.CompanyEmail">@Model.company.CompanyEmail</a>
-                        </strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-12">
                 <div class="tabs-content" style="display: block;">
                     <h4>Job Related Details</h4>
@@ -225,6 +153,72 @@ ViewBag.Title = "Job Details";
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tabs-content" style="display: block;">
+                    <h4>Description</h4>
+
+                    <p>@Model.JobDesc1</p>
+
+                </div>
+
+                <br>
+                <div class="tabs-content" style="display: block;">
+                    <h4>About Employer</h4>
+                    <p>@Model.company.CompanyDesc</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <br>
+                <div>
+                    <img src="~/assets/images/product-1-720x480.jpg" alt="" class="img-fluid wc-image" style="width:360px; height:240px;">
+                </div>
+                <br>
+
+
+
+                <button class="btn btn-primary" id="applybutton" style="display: block" data-toggle="modal" data-target="#exampleModal">Apply for this Job</button>
+
+                <br>
+                <div class="tabs-content">
+                    <h4>Contact Details</h4>
+
+                    <p>
+                        <span>Name</span>
+
+                        <br>
+
+                        <strong>@Model.company.CompanyName</strong>
+                    </p>
+
+                    <p>
+                        <span>Phone</span>
+
+                        <br>
+
+                        <strong>
+                            <a href="tel:@Model.company.CompanyContactNo">@Model.company.CompanyContactNo</a>
+                        </strong>
+                    </p>
+
+
+                    <p>
+                        <span>Email</span>
+
+                        <br>
+
+                        <strong>
+                            <a href="mailto: @Model.company.CompanyEmail">@Model.company.CompanyEmail</a>
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
         <br>
         <br>

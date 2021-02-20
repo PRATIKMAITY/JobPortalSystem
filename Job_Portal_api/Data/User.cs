@@ -49,6 +49,13 @@ namespace Job_Portal_api.Data
         public string AlternatePhno { get; set; }
         public Nullable<System.DateTime> Joinedon { get; set; }
         public string aspnetuserid { get; set; }
+        public Nullable<int> C10thpassoutyear { get; set; }
+        public Nullable<int> C12thpassoutyear { get; set; }
+        public Nullable<int> UGPassoutYear { get; set; }
+        public Nullable<int> PGPassoutYear { get; set; }
+        public string C10thSchoolName { get; set; }
+        public string C12thSchoolName { get; set; }
+        public string ProfilePicPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ApplyJob> ApplyJobs { get; set; }

@@ -1,0 +1,398 @@
+﻿@{@model JobFrontEnd.Models.UserViewModel
+
+    ViewBag.Title = "AddEditprofile";
+    ViewBag.ProfilePicupload = 1;
+    ViewBag.CvUpload = 2;
+    ViewBag.Details = 3;
+}
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Contact Us</h1>
+                <span>feel free to send us a message now!</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="callback-form contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Your <em>Profile</em></h2>
+                    <span>Suspendisse a ante in neque iaculis lacinia</span>
+                </div>
+            </div>
+            
+
+           
+            
+
+
+            <div class="col-md-12">
+                <div class="contact-form">
+                        <div class="row">
+                            
+                                <div class="contact-information" style="margin-top:10px;">
+                                    <div class="container">
+                                        <div class="row">
+
+                           @using (Html.BeginForm("AddEditUser", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                                            {
+                                                <div class="col-lg-12">
+                                                    <div class="contact-item">
+                                                        <img src="~/ProfilePic/@Model.ProfilePicPath" style="border-radius:30%;height:200px;width:200px;" />
+
+
+                                                        <div class="change-photo-btn" id="upload">
+                                                            <input name="profilefile" type="file" accept=".jpg,.jpeg,.png,.gif" class="upload" value="@Model.profilefile" style="margin: auto;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <input name="aspnetuserid" type="hidden" value="@Model.aspnetuserid" />
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input name="UserId" type="hidden" value="@Model.UserId" />
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input name="flag" type="hidden" value="@ViewBag.ProfilePicupload" />
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <fieldset>
+                                                        <input type="submit" Value="Upload profile" class="filled-button" />
+                                                    </fieldset>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                          
+
+                            @using (Html.BeginForm("AddEditUser", "UserProfile", FormMethod.Post))
+                            {
+
+                                <div class="col-lg-12">
+                                    <h3>Basic Details</h3>
+                                </div>
+                                <div class="col-md-12">
+                                    <input name="UserId" type="hidden" value="@Model.UserId" />
+                                </div>
+                                <div class="col-md-12">
+                                    <input name="flag" type="hidden" value="@ViewBag.Details" />
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="UserName" placeholder="Enter Your Name..." value="@Model.UserName" required="" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <label>Contact No</label>
+                                        <input type="number" class="form-control" name="UserContactNo" placeholder="Enter Your Contact number..." value="@Model.UserContactNo" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <label>Email</label>
+                                        <input type="hidden" class="form-control" name="UserEmail" placeholder="Enter Your Email..." value="@Model.UserEmail" disabled="disabled" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" name="CurrentLoc" placeholder="Your Current Location..." value="@Model.CurrentLoc" />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <label>Date of Birth</label>
+                                        <input type="Date" class="form-control" name="DOB" placeholder="Date of Birth..." value="@string.Format("{0:yyyy-MM-dd}", Model.DOB)" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="Number" class="form-control" name="AlternatePhno" placeholder="Alertnative Contact Number..." value="@Model.AlternatePhno" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea rows="4" cols="50" class="form-control" name="Addr" placeholder="Your Address" required="">@Model.Addr"</textarea>
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <h3>10th Details</h3>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" name="C10thBoard" placeholder="10th Board Name... *" value="@Model.C10thBoard" />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="Number" class="form-control" name="C10thPercentage" placeholder="10th Percentage..." value="@Model.C10thPercentage" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="10th School Name..." name="C10thSchoolName" value="@Model.C10thSchoolName" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="10th Passout Year..." name="C10thpassoutyear" value="@Model.C10thpassoutyear" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <h3>12th Details</h3>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="12th Board Name...*" name="HSBoard" value="@Model.HSBoard" />
+                                    </fieldset>
+                                </div>
+
+
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="12th Percentage...*" name="HSPercentage" value="@Model.HSPercentage" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="12th School Name..." name="C12thSchoolName" value="@Model.C12thSchoolName" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="12th Passout Year..." name="C12thpassoutyear" value="@Model.C12thpassoutyear" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <h4>Undergraduate Details</h4>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Under Graduate University..." name="UGUnivercity" value="@Model.UGUnivercity" />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Under Graduate College..." name="UGCollege" value="@Model.UGCollege" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Under Graduate Percentage..." name="UGPercentage" value="@Model.UGPercentage" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Under Graduate Passout Year..." name="UGPassoutYear" value="@Model.UGPassoutYear" />
+                                    </fieldset>
+                                </div>
+
+
+
+
+                                <div class="col-lg-12">
+                                    <h4>Postgraduate Details</h4>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Post Graduate University..." name="PGUniversity" value="@Model.PGUniversity" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Post Graduate College..." name="PGCollege" value="@Model.PGCollege" />
+                                    </fieldset>
+                                </div>
+
+
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Post Graduate Percentage..." name="PGPercentage" value="@Model.PGPercentage" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Post Graduate Passout Year..." name="PGPassoutYear" value="@Model.PGPassoutYear" />
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <h4>Skills</h4>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Enter Your Skill 1 ..." name="Skill1" value="@Model.Skill1" required />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Enter Your Skill 2 ..." name="Skill2" value="@Model.Skill2" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Enter Your Skill 3 ..." name="Skill3" value="@Model.Skill3" />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-12">
+                                    <h4>Current Work</h4>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Current Office Name..." name="CurrentOfcName" value="@Model.CurrentOfcName" />
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="text" class="form-control" placeholder="Your Current Designation..." name="CurrentDesignation" value="@Model.CurrentDesignation" />
+                                    </fieldset>
+                                </div>
+
+
+
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Current Salary Per Montn..." name="CurrentySalary" value="@Model.CurrentySalary" />
+                                    </fieldset>
+                                </div>
+
+
+
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="number" class="form-control" placeholder="Year of Exprience..." name="TotalYearOfExp" value="@Model.TotalYearOfExp" />
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+
+                                    <fieldset>
+                                        <input type="submit" id="form-submit" Value="Save Details" class="filled-button" />
+                                    </fieldset>
+                                </div>
+                            }
+
+
+                            <div class="col-lg-12">
+                                <h4>Your CV /Resume</h4>
+                            </div>
+
+                            @using (Html.BeginForm("AddEditUser", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                            {
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <input type="file" class="form-control" placeholder="CV Path..." value="" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
+
+                                    <fieldset>
+                                        <input type="submit" id="form-submit" Value="Upload CV" class="filled-button" />
+                                    </fieldset>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
+                            
+                        </div>
+                            
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+

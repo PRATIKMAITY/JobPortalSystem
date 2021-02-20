@@ -82,6 +82,13 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="jobpotaldbModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ProfilePicPath" ColumnName="ProfilePicPath" />
+          <ScalarProperty Name="C12thSchoolName" ColumnName="12thSchoolName" />
+          <ScalarProperty Name="C10thSchoolName" ColumnName="10thSchoolName" />
+          <ScalarProperty Name="PGPassoutYear" ColumnName="PGPassoutYear" />
+          <ScalarProperty Name="UGPassoutYear" ColumnName="UGPassoutYear" />
+          <ScalarProperty Name="C12thpassoutyear" ColumnName="12thpassoutyear" />
+          <ScalarProperty Name="C10thpassoutyear" ColumnName="10thpassoutyear" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserContactNo" ColumnName="UserContactNo" />

@@ -117,6 +117,13 @@
     <Property Name="aspnetuserid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ApplyJobs" Relationship="Self.FK_ApplyJob_Users" FromRole="Users" ToRole="ApplyJob" />
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Users_AspNetUsers" FromRole="Users" ToRole="AspNetUsers" />
+    <Property Name="C10thpassoutyear" Type="Int32" />
+    <Property Name="C12thpassoutyear" Type="Int32" />
+    <Property Name="UGPassoutYear" Type="Int32" />
+    <Property Name="PGPassoutYear" Type="Int32" />
+    <Property Name="C10thSchoolName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="C12thSchoolName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProfilePicPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_ApplyJob_JobDesc">
     <End Role="JobDesc" Type="Self.JobDesc" Multiplicity="0..1" />

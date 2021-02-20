@@ -18,6 +18,21 @@ namespace JobFrontEnd.Controllers
         // GET: Category
         public async Task<ActionResult> Index()
         {
+            object loggedin;
+
+            try
+            {
+                loggedin = Request.Cookies["LogInFlag"].Value;
+            }
+            catch (System.NullReferenceException ex)
+            {
+                // not logged in or null id.
+                loggedin = "0";
+            }
+            if (loggedin.ToString() == "1")
+            {
+                ViewBag.loginflagmvc = 1;
+            }
 
 
             var model = new HomeViewModel();
@@ -37,6 +52,25 @@ namespace JobFrontEnd.Controllers
 
         public async Task<ActionResult> details(string Categoryid)
         {
+
+            object loggedin;
+
+            try
+            {
+                loggedin = Request.Cookies["LogInFlag"].Value;
+
+            }
+            catch (System.NullReferenceException ex)
+            {
+                // not logged in or null id.
+                loggedin = "0";
+            }
+            if (loggedin.ToString() == "1")
+            {
+                ViewBag.loginflagmvc = 1;
+            }
+
+
             var model = new ListCategoryViewModel();
 
             // To get All Categories

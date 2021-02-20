@@ -28,46 +28,97 @@ namespace Job_Portal_api.Controllers
         {
             try
             {
-                var model = new User
-                {
-                    UserId = Guid.NewGuid(),
-                    UserName = AddUser.UserName,
-                    Gender = AddUser.Gender,
-                    UserContactNo = AddUser.UserContactNo,
-                    UserEmail = AddUser.UserEmail,
-                    Addr = AddUser.Addr,
-                    DOB = AddUser.DOB,
-                    C10thBoard = AddUser.C10thBoard,
-                    C10thPercentage = AddUser.C10thPercentage,
-                    HSBoard = AddUser.HSBoard,
-                    HSPercentage = AddUser.HSPercentage,
-                    UGUnivercity = AddUser.UGUnivercity,
-                    UGCollege = AddUser.UGCollege,
-                    UGPercentage = AddUser.UGPercentage,
-                    PGUniversity = AddUser.PGUniversity,
-                    PGCollege = AddUser.PGCollege,
-                    PGPercentage = AddUser.PGPercentage,
-                    Skill1 = AddUser.Skill1,
-                    Skill2 = AddUser.Skill2,
-                    Skill3 = AddUser.Skill3,
-                    CurrentLoc = AddUser.CurrentLoc,
-                    CurrentDesignation = AddUser.CurrentDesignation,
-                    CurrentOfcName = AddUser.CurrentOfcName,
-                    CurrentySalary = AddUser.CurrentySalary,
-                    TotalYearOfExp = AddUser.TotalYearOfExp,
-                    AlternatePhno = AddUser.AlternatePhno,
-                    CvPath = AddUser.CvPath,
+                var query = _db.Users.Where(a => a.UserId.ToString() == AddUser.UserId.ToString()).SingleOrDefault();
 
+                //UserId = Guid.NewGuid(),
+                query.UserName = AddUser.UserName;
+                query.Gender = AddUser.Gender;
+                query.UserContactNo = AddUser.UserContactNo;
+                query.UserEmail = AddUser.UserEmail;
+                query.Addr = AddUser.Addr;
+                query.DOB = AddUser.DOB;
+                query.C10thBoard = AddUser.C10thBoard;
+                query.C10thPercentage = AddUser.C10thPercentage;
+                query.HSBoard = AddUser.HSBoard;
+                query.HSPercentage = AddUser.HSPercentage;
+                query.UGUnivercity = AddUser.UGUnivercity;
+                query.UGCollege = AddUser.UGCollege;
+                query.UGPercentage = AddUser.UGPercentage;
+                query.PGUniversity = AddUser.PGUniversity;
+                query.PGCollege = AddUser.PGCollege;
+                query.PGPercentage = AddUser.PGPercentage;
+                query.Skill1 = AddUser.Skill1;
+                query.Skill2 = AddUser.Skill2;
+                   query.Skill3 = AddUser.Skill3;
+                query.CurrentLoc = AddUser.CurrentLoc;
+                query.CurrentDesignation = AddUser.CurrentDesignation;
+                query.CurrentOfcName = AddUser.CurrentOfcName;
+                query.CurrentySalary = AddUser.CurrentySalary;
+                query.TotalYearOfExp = AddUser.TotalYearOfExp;
+                query.AlternatePhno = AddUser.AlternatePhno;
 
-                };
-                _db.Users.Add(model);
+                query.C10thpassoutyear = AddUser.C10thpassoutyear;
+                query.C10thSchoolName = AddUser.C10thSchoolName;
+                query.C12thpassoutyear = AddUser.C12thpassoutyear;
+                query.C12thSchoolName = AddUser.C12thSchoolName;
+
+                query.PGPassoutYear = AddUser.PGPassoutYear;
+                query.UGPassoutYear = AddUser.UGPassoutYear;
+                    
+               
+                
                 _db.SaveChanges();
-                return "User Added Successfully";
+                return "User Edited Successfully";
             }
             catch
             {
                 return "Some error occured";
             }
+        }
+
+
+        [HttpPost]
+        [ActionName("AddorChangeCV")]
+        public string AddCV([FromBody]UserViewModel AddUser)
+        {
+            try
+            {
+                var query = _db.Users.Where(a => a.UserId.ToString() == AddUser.UserId.ToString()).SingleOrDefault();
+
+                query.CvPath = AddUser.CvPath;
+               
+
+
+                _db.SaveChanges();
+                return "CV add or EditSuccessfully";
+            }
+            catch
+            {
+                return "Some error occured";
+            }
+
+        }
+
+        [HttpPost]
+        [ActionName("AddorChangePhoto")]
+        public string Addphoto([FromBody] UserViewModel AddUser)
+        {
+            try
+            {
+                var query = _db.Users.Where(a => a.UserId.ToString() == AddUser.UserId.ToString()).SingleOrDefault();
+
+                query.ProfilePicPath = AddUser.ProfilePicPath;
+
+
+
+                _db.SaveChanges();
+                return "Photo add or EditSuccessfully";
+            }
+            catch
+            {
+                return "Some error occured";
+            }
+
         }
 
         //......get all users......................
@@ -114,13 +165,13 @@ namespace Job_Portal_api.Controllers
             return model;
         }
 
-        //......Get User By Id.............................
+        //......Get User By aspuserId.............................
         [HttpGet]
         [ActionName("GetUserById")]
         public async Task<UserViewModel> GetUserById(string UId)
         {
 
-            var query = await _db.Users.Where(a =>a.UserId.ToString() == UId).SingleOrDefaultAsync();
+            var query = await _db.Users.Where(a =>a.aspnetuserid.ToString() == UId).SingleOrDefaultAsync();
             var model = new UserViewModel();
             if (query != null)
             {
@@ -154,6 +205,14 @@ namespace Job_Portal_api.Controllers
                     TotalYearOfExp = query.TotalYearOfExp,
                     AlternatePhno = query.AlternatePhno,
                     CvPath = query.CvPath,
+                    C10thpassoutyear=query.C10thpassoutyear,
+                    C10thSchoolName=query.C10thSchoolName,
+                    C12thpassoutyear=query.C12thpassoutyear,
+                    C12thSchoolName=query.C12thSchoolName,
+                    Joinedon=query.Joinedon,
+                    PGPassoutYear=query.PGPassoutYear,
+                    UGPassoutYear=query.UGPassoutYear,
+                    ProfilePicPath=query.ProfilePicPath,
                 };
             }
             return model;

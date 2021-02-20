@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Job_Portal_api.Model
+namespace JobFrontEnd.Models
 {
-    public class UserViewModel
+    public class UserViewModelApiSend
     {
         public Guid UserId { get; set; }
         public string UserName { get; set; }
@@ -32,7 +32,7 @@ namespace Job_Portal_api.Model
         public string TotalYearOfExp { get; set; }
         public string CurrentLoc { get; set; }
         public string Gender { get; set; }
-        public string CvPath { get; set; }
+       
         public string AlternatePhno { get; set; }
         public Nullable<System.DateTime> Joinedon { get; set; }
         public string aspnetuserid { get; set; }
@@ -42,9 +42,8 @@ namespace Job_Portal_api.Model
         public Nullable<int> PGPassoutYear { get; set; }
         public string C10thSchoolName { get; set; }
         public string C12thSchoolName { get; set; }
+
+        public string cvpath { get; set; }
         public string ProfilePicPath { get; set; }
-
-
-
     }
 }

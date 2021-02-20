@@ -34,5 +34,19 @@ namespace JobFrontEnd.Models
         public string Gender { get; set; }
         public string CvPath { get; set; }
         public string AlternatePhno { get; set; }
+        public Nullable<System.DateTime> Joinedon { get; set; }
+        public string aspnetuserid { get; set; }
+        public Nullable<int> C10thpassoutyear { get; set; }
+        public Nullable<int> C12thpassoutyear { get; set; }
+        public Nullable<int> UGPassoutYear { get; set; }
+        public Nullable<int> PGPassoutYear { get; set; }
+        public string C10thSchoolName { get; set; }
+        public string C12thSchoolName { get; set; }
+        public HttpPostedFileBase profilefile { get; set; }
+
+        public HttpPostedFileBase Cvfile { get; set; }
+        public string flag { get; set; }
+
+        public string ProfilePicPath { get; set; }
     }
 }
