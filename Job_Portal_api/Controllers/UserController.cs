@@ -234,5 +234,23 @@ namespace Job_Portal_api.Controllers
 
 
         }
+        
+        // .. get profilepic path by id
+        [HttpGet]
+        [ActionName("GetProfilepicPathById")]
+        public async Task<UserViewModel> GetProfilepicPathById(string UserId) 
+        {
+            var Query = await _db.Users.Where(a => a.aspnetuserid == UserId).SingleOrDefaultAsync();
+            var model = new UserViewModel();
+            if(Query != null)
+            {
+                model = new UserViewModel
+                {
+                    ProfilePicPath = Query.ProfilePicPath,
+                };
+            }
+
+            return model;
+        }
     }
 }

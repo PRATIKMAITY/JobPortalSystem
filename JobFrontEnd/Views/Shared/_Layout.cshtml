@@ -465,6 +465,8 @@ keyframes mover {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" integrity="sha512-aUhL2xOCrpLEuGD5f6tgHbLYEXRpYZ8G5yD+WlFrXrPy2IrWBlu6bih5C9H6qGsgqnU6mgx6KtU8TreHpASprw==" crossorigin="anonymous"></script>
 
 <script>
+    
+
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -492,11 +494,6 @@ keyframes mover {
     
         
     
-    
-
-        
-       
-
         //var res = "User";
         
         
@@ -510,9 +507,28 @@ keyframes mover {
         document.cookie = cname + "=" + cvalue + "; " + expires;
     };
 
-        
 
-    $('#profilepic').html('<img src="../images/about-1-570x350.jpg" alt=""/ style="height:30px;width:30px; border-radius: 50%;">');
+    var user = {};
+    user.UserId = getCookie('UserId');
+
+
+    $.ajax({
+        url: path + 'User/GetProfilepicPathById',
+        type: 'GET',
+        data: user,
+
+        success: function (response) {
+            console.log(response);
+            $('#profilepic').html('<img src="/ProfilePic/' + response.ProfilePicPath + '" alt=""/ style="height:30px;width:30px; border-radius: 50%;" >');
+
+        },
+
+        error: function () {
+            console.log('Error in Operation');
+        },
+    });  
+
+    //$('#profilepic').html('<img src="../ProfilePic/about-1-570x350.jpg" alt=""/ style="height:30px;width:30px; border-radius: 50%;">');
 
     $("#login").click(function () {
         var user = {};
@@ -532,6 +548,7 @@ keyframes mover {
                     $.cookie('UserName', response.UserName, { expires: 7, path: '/' });
                     $.cookie('Role', response.rolename, { expires: 7, path: '/' });
                     $.cookie('LogInFlag', islogin, { expires: 7, path: '/' });
+                    //$.cookie('ProfilePicPath', response.ProfilePicPath, { expires: 7, path: '/' });
 
                    
                     if (response.rolename == "Student") {

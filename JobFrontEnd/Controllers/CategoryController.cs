@@ -81,7 +81,7 @@ namespace JobFrontEnd.Controllers
                 var response = streamTask.Content.ReadAsStringAsync().Result;
                 model.categories = JsonConvert.DeserializeObject<CategoryViewModel>(response);
             }
-
+            //get job by category....................
             var streamTask1 = await client.GetAsync(BaseUrl + "Job/GetJobByCategoryId?CId=" + Categoryid);
             if (streamTask1.IsSuccessStatusCode)
             {

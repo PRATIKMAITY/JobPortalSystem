@@ -1,7 +1,6 @@
 ﻿using JobFrontEnd.Models;
 using Newtonsoft.Json;
 using Microsoft.Ajax.Utilities;
-
 using System;
 using System.Collections.Generic;
 using System.IO;

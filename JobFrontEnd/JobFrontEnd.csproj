@@ -245,6 +245,7 @@
     <Content Include="images\team-image-2-646x680.jpg" />
     <Content Include="images\team-image-3-646x680.jpg" />
     <Content Include="images\team-image-4-646x680.jpg" />
+    <Content Include="ProfilePic\default_user.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\Flaticon.woff" />
@@ -329,7 +330,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Cv\" />
-    <Folder Include="ProfilePic\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
