@@ -1,7 +1,34 @@
 ﻿@{@model JobFrontEnd.Models.ListAllJobViewModel
 
-ViewBag.Title = "Job Page";
+    ViewBag.Title = "Job Page";
+    ViewBag.TotalPage = ViewBag.TPage;
 }
+<style>
+
+   
+    .pagination {
+        display: inline-block;
+        font-size: 15px;
+        background-color: #ddd;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #4CAF50;
+        }
+</style>
+
 
 <div class="main-banner header-text" id="top">
     <div class="Modern-Slider">
@@ -60,10 +87,17 @@ ViewBag.Title = "Job Page";
 
             <div class="col-md-12">
                 <div id="tfheader">
-                    <form id="tfnewsearch" method="get" action="http://www.google.com">
+                    <form id="tfnewsearch" method="get" action="">
                         <input type="text" class="tftextinput" name="q" size="21" maxlength="120" placeholder="Search Job">
                         <input type="text" class="tftextinput" name="q" size="21" maxlength="120" placeholder="Enter Job Location">
-
+                        <select id="country" class="tf">
+                            <option value="">Select Country</option>
+                            <option value="586">Pakistan</option>
+                            <option value="682">Saudi Arabia</option>
+                            <option value="784">United Arab Emirates</option>
+                            <option value="826">United Kingdom</option>
+                            <option value="840">United States</option>
+                        </select>
                         <input type="submit" value="search" class="tfbutton">
 
                     </form>
@@ -92,6 +126,16 @@ ViewBag.Title = "Job Page";
                     <br>
                 </div>
             }
+            <div class="row">
+                @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+
+        <div class="col-lg-1" style="width: 4.333333%;">
+            <div class="pagination">
+                <a href="@Url.Action("Index", "Job", new {page =i})">@i</a>
+            </div>
+        </div>}
+            </div>
 
 
         </div>

@@ -201,5 +201,37 @@ namespace Job_Portal_api.Controllers
             //return model;
         }
 
+        //get job by location...................
+        [HttpGet]
+        [ActionName("GetJobByLocation")]
+        public async Task<List<JobViewModel>> GetJobByLocation(string loc) 
+        {
+            var query = await _db.JobDescs.Where(a => a.JobLoc == loc).ToArrayAsync();
+            var model =new List<JobViewModel>();
+            if(query!=null)
+            {
+                foreach( var item in query)
+                {
+                    model.Add(new JobViewModel 
+                    {
+                        JobId = item.JobId,
+                        ComapanyId = item.ComapanyId ?? default,
+                        ExpextedSalary = item.ExpextedSalary,
+                        JobDesc1 = item.JobDesc1,
+                        JobName = item.JobName,
+                        JobLoc = item.JobLoc,
+                        JobPos = item.JobPos,
+                        JobSkill = item.JobSkill,
+                        JobType = item.JobType,
+                        MinQulafication = item.MinQulafication,
+                        CategoryId = item.CategoryId ?? default,
+
+                    });
+                }
+            }
+            return model;
+        }
+
+        
     }
 }

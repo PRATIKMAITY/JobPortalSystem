@@ -1,4 +1,5 @@
 ﻿using JobFrontEnd.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,21 +17,26 @@ namespace JobFrontEnd.Controllers
 
         static HttpClient client = new HttpClient();
         // GET: All Job
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page)
         {
-            object loggedin;
-
+            int pageNumber = (page ?? 1);
+            int pagesize = 6;
+            string loggedin;
             try
             {
-                loggedin = Request.Cookies["LogInFlag"].Value;
+
+                loggedin = Request.Cookies["LogInFlag"].IfNotNull(arg => arg.Value);
+
 
             }
-            catch (System.NullReferenceException ex)
+            catch (System.NullReferenceException)
             {
                 // not logged in or null id.
                 loggedin = "0";
             }
-            if (loggedin.ToString() == "1")
+
+            if (loggedin == "1")
+
             {
                 ViewBag.loginflagmvc = 1;
             }
@@ -39,7 +45,15 @@ namespace JobFrontEnd.Controllers
             if (streamTask.IsSuccessStatusCode)
             {
                 var response = streamTask.Content.ReadAsStringAsync().Result;
-                model.AllJobs = JsonConvert.DeserializeObject<List<JobViewModel>>(response);
+                var AllJobs = JsonConvert.DeserializeObject<List<JobViewModel>>(response);
+
+                decimal count = (AllJobs.Count() / (Decimal)pagesize);
+                decimal pages = Math.Ceiling(count);
+                ViewBag.TPage = pages;
+                int excluderecord = (pagesize * pageNumber) - pagesize;
+
+                var finallist = AllJobs.Skip(excluderecord).Take(pagesize).ToList();
+                model.AllJobs = finallist;
             }
             return View(model);
         }
@@ -75,5 +89,37 @@ namespace JobFrontEnd.Controllers
 
             return View(model);
         }
+        public async Task<ActionResult> Details1(string jobloc)
+        {
+            object loggedin;
+
+            try
+            {
+                loggedin = Request.Cookies["LogInFlag"].Value;
+
+            }
+            catch (System.NullReferenceException ex)
+            {
+                // not logged in or null id.
+                loggedin = "0";
+            }
+            if (loggedin.ToString() == "1")
+            {
+                ViewBag.loginflagmvc = 1;
+            }
+
+
+            var model = new JobViewModel();
+            var streamTask = await client.GetAsync(BaseUrl + "Job/GetJobByLocation?loc=" + jobloc);
+            if (streamTask.IsSuccessStatusCode)
+            {
+                var response = streamTask.Content.ReadAsStringAsync().Result;
+                model = JsonConvert.DeserializeObject<JobViewModel>(response);
+            }
+
+
+            return View(model);
+        }
+
     }
 }
