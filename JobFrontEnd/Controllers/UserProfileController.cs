@@ -32,19 +32,21 @@ namespace JobFrontEnd.Controllers
         [HttpGet]
         public  async Task<ActionResult> AddEditprofile()
         {
-            object loggedin;
-
+            string loggedin;
             try
             {
-                loggedin = Request.Cookies["LogInFlag"].Value;
+
+                loggedin = Request.Cookies["LogInFlag"].IfNotNull(arg => arg.Value);
+
 
             }
-            catch (System.NullReferenceException ex)
+            catch (System.NullReferenceException)
             {
                 // not logged in or null id.
                 loggedin = "0";
             }
-            if (loggedin.ToString() == "1")
+
+            if (loggedin == "1")
             {
                 ViewBag.loginflagmvc = 1;
             }

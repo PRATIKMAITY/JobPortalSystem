@@ -19,8 +19,12 @@ namespace JobFrontEnd.Controllers
         // GET: All Job
         public async Task<ActionResult> Index(int? page)
         {
+<<<<<<< HEAD
             int pageNumber = (page ?? 1);
             int pagesize = 6;
+=======
+            
+>>>>>>> 8a2235c567bd3e247cce572f0a9c3db2ac8dbe64
             string loggedin;
             try
             {
@@ -36,6 +40,7 @@ namespace JobFrontEnd.Controllers
             }
 
             if (loggedin == "1")
+<<<<<<< HEAD
 
             {
                 ViewBag.loginflagmvc = 1;
@@ -54,9 +59,23 @@ namespace JobFrontEnd.Controllers
 
                 var finallist = AllJobs.Skip(excluderecord).Take(pagesize).ToList();
                 model.AllJobs = finallist;
+=======
+            
+                {
+                    ViewBag.loginflagmvc = 1;
+                }
+                var model = new ListAllJobViewModel();
+                var streamTask = await client.GetAsync(BaseUrl + "Job/GetAllJob");
+                if (streamTask.IsSuccessStatusCode)
+                {
+                    var response = streamTask.Content.ReadAsStringAsync().Result;
+                    model.AllJobs = JsonConvert.DeserializeObject<List<JobViewModel>>(response);
+                  
+                }
+                return View(model);
+>>>>>>> 8a2235c567bd3e247cce572f0a9c3db2ac8dbe64
             }
-            return View(model);
-        }
+        
         public async Task<ActionResult> Details(string jobid)
         {
             object loggedin;
