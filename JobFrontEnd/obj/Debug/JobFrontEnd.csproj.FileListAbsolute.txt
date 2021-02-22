@@ -164,3 +164,7 @@ C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.dll
 C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.Mvc.dll
 C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.xml
 C:\Users\INDRANIL\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.Mvc.xml
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.dll
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.Mvc.dll
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.xml
+C:\Users\Rony\source\repos\Job\JobPortalSystem\JobFrontEnd\bin\PagedList.Mvc.xml
