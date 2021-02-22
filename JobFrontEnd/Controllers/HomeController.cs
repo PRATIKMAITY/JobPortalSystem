@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using JobFrontEnd.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 
 namespace JobFrontEnd.Controllers
@@ -19,12 +20,12 @@ namespace JobFrontEnd.Controllers
         public async Task<ActionResult> Index()
         {        
             var model = new HomeViewModel();
-            object loggedin;
-           
+            //object loggedin;
+            string loggedin;
             try
             {
                 
-                loggedin= Request.Cookies["LogInFlag"].Value;
+               loggedin = Request.Cookies["LogInFlag"].IfNotNull(arg => arg.Value);
                 
 
             }
@@ -34,7 +35,7 @@ namespace JobFrontEnd.Controllers
                 loggedin = "0";
             }
 
-            if(loggedin.ToString()=="1")
+            if(loggedin=="1")
             {
                 ViewBag.loginflagmvc = 1;
             }

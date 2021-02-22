@@ -1,4 +1,5 @@
 ﻿using JobFrontEnd.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,31 +19,37 @@ namespace JobFrontEnd.Controllers
         // GET: All Job
         public async Task<ActionResult> Index()
         {
-            object loggedin;
-
+            
+            string loggedin;
             try
             {
-                loggedin = Request.Cookies["LogInFlag"].Value;
+
+                loggedin = Request.Cookies["LogInFlag"].IfNotNull(arg => arg.Value);
+
 
             }
-            catch (System.NullReferenceException ex)
+            catch (System.NullReferenceException)
             {
                 // not logged in or null id.
                 loggedin = "0";
             }
-            if (loggedin.ToString() == "1")
-            {
-                ViewBag.loginflagmvc = 1;
+
+            if (loggedin == "1")
+            
+                {
+                    ViewBag.loginflagmvc = 1;
+                }
+                var model = new ListAllJobViewModel();
+                var streamTask = await client.GetAsync(BaseUrl + "Job/GetAllJob");
+                if (streamTask.IsSuccessStatusCode)
+                {
+                    var response = streamTask.Content.ReadAsStringAsync().Result;
+                    model.AllJobs = JsonConvert.DeserializeObject<List<JobViewModel>>(response);
+                  
+                }
+                return View(model);
             }
-            var model = new ListAllJobViewModel();
-            var streamTask = await client.GetAsync(BaseUrl + "Job/GetAllJob");
-            if (streamTask.IsSuccessStatusCode)
-            {
-                var response = streamTask.Content.ReadAsStringAsync().Result;
-                model.AllJobs = JsonConvert.DeserializeObject<List<JobViewModel>>(response);
-            }
-            return View(model);
-        }
+        
         public async Task<ActionResult> Details(string jobid)
         {
             object loggedin;

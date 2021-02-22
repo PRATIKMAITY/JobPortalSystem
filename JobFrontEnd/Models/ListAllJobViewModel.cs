@@ -8,5 +8,8 @@ namespace JobFrontEnd.Models
     public class ListAllJobViewModel
     {
         public List<JobViewModel> AllJobs { get; set; }
+        
+            
+       
     }
 }
