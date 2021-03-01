@@ -108,7 +108,7 @@
           <Property Name="Gender" Type="varchar" MaxLength="50" />
           <Property Name="CvPath" Type="varchar(max)" />
           <Property Name="AlternatePhno" Type="varchar" MaxLength="50" />
-          <Property Name="Joinedon" Type="datetime" />
+          <Property Name="Joinedon" Type="datetime" Nullable="false" />
           <Property Name="aspnetuserid" Type="nvarchar" MaxLength="128" />
           <Property Name="10thpassoutyear" Type="int" />
           <Property Name="12thpassoutyear" Type="int" />
@@ -308,7 +308,7 @@
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CvPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AlternatePhno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Joinedon" Type="DateTime" Precision="3" />
+          <Property Name="Joinedon" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="aspnetuserid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ApplyJobs" Relationship="Self.FK_ApplyJob_Users" FromRole="Users" ToRole="ApplyJob" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Users_AspNetUsers" FromRole="Users" ToRole="AspNetUsers" />

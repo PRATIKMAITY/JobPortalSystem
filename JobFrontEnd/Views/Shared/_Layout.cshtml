@@ -326,6 +326,15 @@
                             <input type="text" class="form-control form-control-lg" id="UEmail" name="UEmail" value="" placeholder="Enter Email Id">
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="colFormLabelLg" class="col-sm-2 col-lg-12 col-form-label col-form-label-lg">Phone Number</label>
+                        <div class="col-sm-12">
+                            <input type="number" class="form-control form-control-lg" id="phno" name="phno" value="" placeholder="Enter Phone No">
+                        </div>
+                    </div>
+
+
                     <div class="form-group row">
                         <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
                         <div class="col-sm-12">
@@ -338,9 +347,9 @@
                             <input type="password" class="form-control form-control-lg" id="ConPassword" name="ConPassword" value="" placeholder="Confirm Password">
                         </div>
                     </div>
-                    
+
                     <div class="col-md-12">
-                       <span id="message" style="color:red"> </span> <br>
+                        <span id="message" style="color:red"> </span> <br>
                     </div>
 
                 </div>
@@ -599,7 +608,32 @@
         else
         {
 
-            alert('register successfull');
+            //alert('register successfull');
+            var user = {};
+            user.Name = $('#Name').val();
+            user.Email = $('#UEmail').val();
+            user.PhoneNumber = $('#phno').val();
+            user.Password = $('#ConPassword').val();
+            $.ajax({
+                url: path + 'auth/Register',
+                type: 'POST',
+                data: user,
+                success: function (response) {
+                    //console.log(response);
+                    if (response.Succeeded)
+                    {
+                        $("#login").click(); 
+                      
+                        
+                    }
+                    else {
+                        alert(response.Message);
+                    }
+                },
+                error: function () {
+                    console.log('Error in Operation');
+                }
+            });
 
         }
 

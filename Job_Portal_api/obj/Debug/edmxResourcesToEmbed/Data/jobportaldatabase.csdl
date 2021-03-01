@@ -113,7 +113,7 @@
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CvPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="AlternatePhno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Joinedon" Type="DateTime" Precision="3" />
+    <Property Name="Joinedon" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="aspnetuserid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ApplyJobs" Relationship="Self.FK_ApplyJob_Users" FromRole="Users" ToRole="ApplyJob" />
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Users_AspNetUsers" FromRole="Users" ToRole="AspNetUsers" />

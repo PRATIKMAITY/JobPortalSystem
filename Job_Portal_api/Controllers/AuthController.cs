@@ -60,24 +60,35 @@ namespace Job_Portal_api.Controllers
                     //    RoleId = role.Id,
                     //    UserId = aspnetuser.Id
                     //};
-                  
+
 
                     var agent = new User
                     {
                         UserId = Guid.NewGuid(),
-                        UserName=Input.Name,
-                        Joinedon= DateTime.Now,
-                        UserEmail=Input.Email,
-                        UserContactNo=Input.PhoneNumber,
+                        UserName = Input.Name,
+                        //Joinedon = DateTime.Now,
+                        UserEmail = Input.Email,
+                        UserContactNo = Input.PhoneNumber,
+                        ProfilePicPath = "default_user.jpg",
                         aspnetuserid = aspnetuser.Id,
                         
 
                     };
                     _db.Users.Add(agent);
                     //add to role
+                    try { 
+                     _db.SaveChanges();
+                    }
 
-                    await _db.SaveChangesAsync();
-                   
+                    catch(Exception ex)
+                    {
+                        return new UserAuthModel
+                        {
+                            Succeeded = false,
+                            Message = ex.Message,
+                        };
+
+                    }
                     return new UserAuthModel
                     {
                        
