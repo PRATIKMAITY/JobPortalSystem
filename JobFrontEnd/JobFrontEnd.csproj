@@ -237,6 +237,8 @@
     <Content Include="images\blog-image-2-940x460.jpg" />
     <Content Include="images\blog-image-3-940x460.jpg" />
     <Content Include="images\blog-image-fullscren-1-1920x700.jpg" />
+    <Content Include="images\featuredjob.jpg" />
+    <Content Include="images\jobsearch.jpg" />
     <Content Include="images\map.jpg" />
     <Content Include="images\product-1-720x480.jpg" />
     <Content Include="images\product-2-720x480.jpg" />

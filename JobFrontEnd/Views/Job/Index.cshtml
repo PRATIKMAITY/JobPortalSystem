@@ -113,9 +113,9 @@ ViewBag.Title = "Job Page";
             @foreach (var item in Model.AllJobs.OrderBy(a => a.JobName))
             {
                 <div class="col-md-4">
-                    <div class="service-item">
+                    <div class="service-item" style="padding-left: 50px;">
                         <a href="@Url.Action("Details", "Job", new {jobid =item.JobId})">
-                            <img src="~/images/product-6-720x480.jpg" alt="" style="height:200px; width:200px;border-radius:70%;">
+                            <img src="~/images/jobsearch.jpg" alt="" style="height:200px; width:200px;border-radius:70%;">
                             <div class="down-content">
                                 <h4>@item.JobName</h4>
                                 <div style="margin-bottom:10px;">

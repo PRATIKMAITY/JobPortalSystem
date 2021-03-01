@@ -278,7 +278,7 @@
                     <div class="form-group row">
                         <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
                         <div class="col-sm-12">
-                            <input type="email" class="form-control form-control-lg"  id="Upass" name="Password" value="" placeholder="Enter Password">
+                            <input type="password" class="form-control form-control-lg"  id="Upass" name="Password" value="" placeholder="Enter Password">
                         </div>
                     </div>
 
@@ -354,7 +354,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="regclose">Close</button>
                     <button type="button" id="register" class="btn btn-primary">Register</button>
                 </div>
             </div>
@@ -450,7 +450,7 @@
                         else
                         {
                             <li class="nav-item" id="sin">
-                                <a class="nav-link" data-toggle="modal" data-target="#signinModal" href="@Href("~/Job/")">Sign In</a>
+                                <a class="nav-link" data-toggle="modal" data-target="#signinModal" id="sinm" href="@Href("~/Job/")">Sign In</a>
                             </li>
                             <li class="nav-item" id="reg">
                                 <a class="nav-link" data-toggle="modal" data-target="#UserRegisterModal" href="@Href("~/Job/")">Register</a>
@@ -599,16 +599,18 @@
         var ConPass = document.getElementById("ConPassword").value;
         if (UPass != ConPass) {
             document.getElementById("message").innerHTML = "**Password did not match";
+            $('#register').attr("disabled", false);
         }
 
         else if (UPass.length < 5) {
             document.getElementById("message").innerHTML = "**Password length must be atleast 5 characters";
-
+            $('#register').attr("disabled", false);
         }
         else
         {
+            $('#register').attr("disabled", true);
 
-            //alert('register successfull');
+           
             var user = {};
             user.Name = $('#Name').val();
             user.Email = $('#UEmail').val();
@@ -622,17 +624,24 @@
                     //console.log(response);
                     if (response.Succeeded)
                     {
-                        $("#login").click(); 
-                      
+                        alert('register successfull');
+                        $("#regclose").click();
+                        $("#sinm").click();
+                        
+                        $('#register').attr("disabled", false);
                         
                     }
                     else {
                         alert(response.Message);
+                        $('#register').attr("disabled", false);
                     }
                 },
                 error: function () {
                     console.log('Error in Operation');
                 }
+              
+                   
+                
             });
 
         }

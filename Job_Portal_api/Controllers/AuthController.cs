@@ -66,7 +66,7 @@ namespace Job_Portal_api.Controllers
                     {
                         UserId = Guid.NewGuid(),
                         UserName = Input.Name,
-                        //Joinedon = DateTime.Now,
+                        Joinedon = DateTime.Now,
                         UserEmail = Input.Email,
                         UserContactNo = Input.PhoneNumber,
                         ProfilePicPath = "default_user.jpg",
