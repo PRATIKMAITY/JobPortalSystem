@@ -296,7 +296,7 @@ header .navbar {
 	letter-spacing: 0.5px;
 	color: #fff;
 	transition: all 0.5s;
-	margin-top: 5px;
+	margin-top: -20px;
 }
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .active>.nav-link,
@@ -822,19 +822,20 @@ ul.slick-dots {
 	text-align: center;
 }
 
-.callback-form .contact-form input {
-	border-radius: 20px;
-	height: 40px;
-	line-height: 40px;
-	display: inline-block;
-	padding: 0px 15px;
-	color: #6a6a6a;
-	font-size: 13px;
-	text-transform: none;
-	box-shadow: none;
-	border: none;
-	margin-bottom: 35px;
-}
+	.callback-form .contact-form input {
+		border-radius: 20px;
+		height: 40px;
+		line-height: 40px;
+		display: inline-block;
+		padding: 0px 15px;
+		color: #6a6a6a;
+		font-size: 13px;
+		text-transform: none;
+		box-shadow: none;
+		border: none;
+		margin-bottom: 35px;
+		border: 2px solid red;
+	}
 
 .callback-form .contact-form input:focus {
 	outline: none;
@@ -1419,3 +1420,4 @@ footer .contact-form button.filled-button:hover {
 
 h5 a { color: #a4c639; } 
 h5 a:hover { color: inherit; } 
+
